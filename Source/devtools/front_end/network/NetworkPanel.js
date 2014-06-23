@@ -1095,7 +1095,7 @@ WebInspector.NetworkLogView.prototype = {
         if (!this._importedMode) {
 	        contextMenu.appendItem(WebInspector.UIString(WebInspector.useLowerCaseMenuTitles() ? "Export raw..." : "Export Raw..."), this._exportRaw.bind(this));
         }
-        contextMenu.appendItem(WebInspector.UIString(WebInspector.useLowerCaseMenuTitles() ? "Import raw..." : "Import Raw..."), this._importRaw.bind(this));
+        contextMenu.appendItem(WebInspector.UIString(WebInspector.useLowerCaseMenuTitles() ? "Import HAR ..." : "Import HAR..."), this._importRaw.bind(this));
 
         contextMenu.appendSeparator();
         contextMenu.appendItem(WebInspector.UIString(WebInspector.useLowerCaseMenuTitles() ? "Clear browser cache" : "Clear Browser Cache"), this._clearBrowserCache.bind(this));
@@ -1224,7 +1224,9 @@ WebInspector.NetworkLogView.prototype = {
 	                return;
 	            var progressIndicator = new WebInspector.ProgressIndicator();
 	            this._progressBarContainer.appendChild(progressIndicator.element);
-	            // write this._requestsss
+	            // write raw requests
+	            var rndWriter = new WebInspector.RNDWriter();
+	            rndWriter.write(stream, this._requests, progressIndicator);
 	        }
     	}
     },
