@@ -1,0 +1,1 @@
+Export and Import raw network data from Chrome devtools Network Panel. This is an alternative to HAR format based export and missing HAR import.
